@@ -7,10 +7,8 @@ import { Input } from "./components/input";
 export default function Home() {
   return (
     <div>
-      <div className="w-">
-        <input type="text" placeholder="Enter a YouTube video link..." class="input input-bordered w-full max-w-xs" />
-      </div>
-      <div className="grid grid-cols-3 my-10 text-center">
+      <Input />
+      <div className="grid grid-cols-5 my-10 text-center mx-10">
         <Reel />
         <ReelText />
         <FactCheck />
