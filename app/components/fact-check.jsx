@@ -5,10 +5,10 @@ export const FactCheck = () => {
         <div className="col-span-5 sm:col-span-1">
           Facts
           <div className="m-10">
-            <div role="alert" class="alert alert-success bg-primary">
+            <div role="alert" className="alert alert-success bg-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 shrink-0 stroke-current"
+                className="h-6 w-6 shrink-0 stroke-current"
                 fill="none"
                 viewBox="0 0 24 24">
                 <path
