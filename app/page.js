@@ -5,7 +5,7 @@ import { ReelText } from "./components/reel-text";
 
 export default function Home() {
   return (
-    <div>
+    <div className="grid grid-cols-3 my-10 text-center">
       <Reel />
       <ReelText />
       <FactCheck />

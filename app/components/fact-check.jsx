@@ -1,5 +1,9 @@
 import React from "react";
 
 export const FactCheck = () => {
-  return <div>Fact-Check</div>;
-};
+    return (
+        <div className="col-span-3 sm:col-span-1">
+          Facts
+        </div>
+      );
+    };
