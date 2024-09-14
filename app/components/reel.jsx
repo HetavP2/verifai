@@ -10,7 +10,7 @@ export const Reel = () => {
         const formData = new FormData(e.currentTarget)
         setVideoId(formData.get('videoIdForm'))
     }
-
+    
     
     
   return (
@@ -21,10 +21,8 @@ export const Reel = () => {
           <input
                       type="text"
                       name='videoIdForm'
-            // onChange={(e) => setVideoId(e.target.value)}
             placeholder="Enter a YouTube video id..."
             className="rounded-none rounded-l-lg input input-bordered w-1/3 sm:w-2/3 inline"
-            // onInput={handleSubmit} 
           />
           <button className="btn btn-neutral inline border-2 rounded-none rounded-r-lg" type="submit">
             Submit
