@@ -3,25 +3,37 @@
 import React, { useState } from "react";
 
 export const Reel = () => {
-  const [videoId, setVideoId] = useState("");
+    const [videoId, setVideoId] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        setVideoId(formData.get('videoIdForm'))
+    }
+
+    
+    
   return (
     <div className="col-span-5 sm:col-span-2 bg-primary">
       Reel
-      <div className="w-full text-center m-10">
-        <input
-          type="text"
-          value={videoId}
-          onChange={(e) => setVideoId(e.target.value)}
-          placeholder="Enter a YouTube video id..."
-          class="rounded-none rounded-l-lg input input-bordered w-2/3 sm:w-1/3 inline"
-        />
-        <button class="btn btn-neutral inline border-2 rounded-none rounded-r-lg">
-          Submit
-        </button>
+      <div className="w-full text-center m-10 mx-auto">
+        <form onSubmit={handleSubmit}>
+          <input
+                      type="text"
+                      name='videoIdForm'
+            // onChange={(e) => setVideoId(e.target.value)}
+            placeholder="Enter a YouTube video id..."
+            className="rounded-none rounded-l-lg input input-bordered w-1/3 sm:w-2/3 inline"
+            // onInput={handleSubmit} 
+          />
+          <button className="btn btn-neutral inline border-2 rounded-none rounded-r-lg" type="submit">
+            Submit
+          </button>
+        </form>
       </div>
       {videoId ? (
         <iframe
-          className="w- h-auto"
+          className="w-3/4 mx-auto h-96 my-10"
           src={`https://www.youtube.com/embed/${videoId}?si=Z4i21SJAJt_qsPQr`}
           title="YouTube video player"
           frameborder="0"
@@ -30,7 +42,7 @@ export const Reel = () => {
           allowfullscreen
         ></iframe>
       ) : (
-        <h1>Hi there</h1>
+        <h1>Paste a YouTube Video URL Above!</h1>
       )}
     </div>
   );
