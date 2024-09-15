@@ -1,7 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
 import ReelText from "./components/reel-text";
-// import { FactCheck } from "./components/fact-check";
 import Reel from "./components/reel";
 
 function App() {
@@ -15,14 +14,13 @@ function App() {
     setVideoId(videoIdActual);
 
   }
-  //small change
 
   return (
     <div className="mx-auto bg-gradient-to-r from-[#E5EBB3] to-[#DEE8CA] h-screen">
       <div className="w-full text-center p-10 mx-auto">
-        <h1 className="text-6xl text-primary font-bold pt-10">verif.ai</h1>
+        <h1 className="text-6xl text-primary font-bold pt-10">Verifai</h1>
         <h2 className="text-2xl text-primary mb-10">
-          Preventing Misinformation
+          Mitigating the Misinformation Pandemic
         </h2>
         <form onSubmit={handleSubmit}>
           <input

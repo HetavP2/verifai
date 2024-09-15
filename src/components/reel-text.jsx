@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const ReelText = ({ videoId }) => {
-  const [visibleChunk, setVisibleChunk] = useState(null); // State to track visible chunk
+  const [visibleChunk, setVisibleChunk] = useState(null);
   const [chunks, setChunks] = useState([]);
-  const [loading, setLoading] = useState(true); // State to manage loading
+  const [loading, setLoading] = useState(true);
   const serverUrl = "http://localhost:5000";
 
   useEffect(() => {
@@ -22,22 +22,18 @@ const ReelText = ({ videoId }) => {
         const json_data = await res.json();
         console.log(json_data);
 
-        // Simulate a 2-minute delay before setting the chunks
-        setTimeout(() => {
-          setChunks(json_data);
-          setLoading(false); // Set loading to false after data is loaded
-        }, 30000); // 1-minute delay (120,000 ms)
+        setChunks(json_data);
+        setLoading(false);
       } catch (error) {
         console.error("Error:", error);
-        setLoading(false); // Also stop loading if an error occurs
+        setLoading(false);
       }
     }
 
     if (videoId) {
-      // Ensure videoId is not null or undefined before fetching
       getTranscript();
     }
-  }, []); // Correctly adding videoId as a dependency
+  }, [videoId]); 
 
   const handleHover = (chunkNum) => {
     setVisibleChunk(chunkNum);
@@ -47,7 +43,6 @@ const ReelText = ({ videoId }) => {
     setVisibleChunk(null);
   };
 
-  // Show a loading spinner or message while data is being fetched
   if (loading) {
     return (
       <div className="col-span-5 sm:col-span-3">
@@ -65,7 +60,7 @@ const ReelText = ({ videoId }) => {
           <h1 className="font-bold text-2xl text-secondary text-[#3F704B] hover:text-[#00A86B]">
             Transcript
           </h1>
-          <div className="m-5 overflow-y-auto h-screen">
+          <div className="m-5 overflow-y-auto h-1/3">
             {chunks.map((chunk, num) => (
               <div key={num}>
                 <p
