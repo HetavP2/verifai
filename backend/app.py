@@ -19,7 +19,7 @@ def transcript(video_id):
         response_utube = requests.get(f"https://www.searchapi.io/api/v1/search?engine=youtube_transcripts&video_id={video_id}&api_key={api_key_utube}")
         response_utube.raise_for_status()  # Ensure the request was successful
         response_utube = response_utube.json()
-
+        print(response_utube)
         # Extract transcript texts
         transcripts_array = [item['text'] for item in response_utube['transcripts']]
         condensed_array = ' '.join(transcripts_array)
@@ -79,6 +79,7 @@ def transcript(video_id):
 
         # Return the DataFrame as JSON response
         print(df)
+        print(df.to_dict())
         return jsonify(df.to_dict())
 
     except Exception as e:
