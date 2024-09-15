@@ -14,9 +14,9 @@ function App() {
   }
 
   return (
-    <div className="mx-auto">
-      <div className="w-full text-center m-10 mx-auto">
-        <h1 className="text-4xl text-primary font-bold m-10">Verif.ai</h1>
+    <div className="mx-auto bg-gradient-to-r from-[#E5EBB3] to-[#DEE8CA]">
+      <div className="w-full text-center p-10 mx-auto">
+        <h1 className="text-6xl text-primary font-bold pt-10">verif.ai</h1>
         <h2 className="text-2xl text-primary mb-10">The Fact Checker</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -34,7 +34,7 @@ function App() {
         </form>
       </div>
 
-      <div className="grid grid-cols-5 my-10 text-center mx-10">
+      <div className="grid grid-cols-5 mt-10 text-center mx-10">
         {videoId ? (
           <Reel videoId={videoId} />
         ) : (

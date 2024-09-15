@@ -3,6 +3,18 @@ import React, { useState } from "react";
 const ReelText = ({ videoId }) => {
   const [visibleChunk, setVisibleChunk] = useState(null); // State to track visible chunk
 
+  // uncomment this after you get transcript
+  // useEffect(() => {
+  //   async function getTranscript() {
+  //     const res = await fetch(serverUrl + "/transcript");
+  //     const json_data = await res.json();
+  //     // const dataServer = await YoutubeTranscript.fetchTranscript(videoId);
+  //     setData(json_data);
+  //   }
+
+  //   getTranscript();
+  // }, []);
+
   const chunks = [
     {
       chunk: "abc",
@@ -22,26 +34,26 @@ const ReelText = ({ videoId }) => {
   ];
 
   const handleHover = (chunkNum) => {
-    setVisibleChunk(chunkNum); 
+    setVisibleChunk(chunkNum);
   };
 
   const handleMouseLeave = () => {
-    setVisibleChunk(null); 
+    setVisibleChunk(null);
   };
 
   return (
     <div className="col-span-5 sm:col-span-3">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="sm:col-span-1 col-span-2">
-          <h1 className="font-bold text-2xl">Transcript</h1>
+          <h1 className="font-bold text-2xl text-secondary">Transcript</h1>
           <div className="m-5 overflow-y-auto h-screen">
             {chunks.map((chunk, num) => (
               <div key={num}>
                 <p
                   id={"chunk" + String(num)}
-                  className="p-3 text-xl inline-block hover:text-red-500"
-                  onMouseEnter={() => handleHover(num)} 
-                  onMouseLeave={handleMouseLeave} 
+                  className="p-3 text-xl inline-block hover:text-secondary"
+                  onMouseEnter={() => handleHover(num)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   {chunk["chunk"]}
                 </p>
