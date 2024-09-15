@@ -45,13 +45,13 @@ const ReelText = ({ videoId }) => {
     <div className="col-span-5 sm:col-span-3">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="sm:col-span-1 col-span-2">
-          <h1 className="font-bold text-2xl text-secondary">Transcript</h1>
-          <div className="m-5 overflow-y-auto h-screen">
+          <h1 className="font-bold text-2xl text-secondary text-[#3F704B] hover:text-[#00A86B]">Transcript</h1>
+          <div className="m-5 overflow-y-auto">
             {chunks.map((chunk, num) => (
               <div key={num}>
                 <p
                   id={"chunk" + String(num)}
-                  className="p-3 text-xl inline-block hover:text-secondary"
+                  className="p-3 text-xl inline-block hover:text-[#2E8B57]"
                   onMouseEnter={() => handleHover(num)}
                   onMouseLeave={handleMouseLeave}
                 >

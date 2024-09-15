@@ -2,7 +2,7 @@ import React from "react";
 
 const Reel = ({ videoId }) => {
   return (
-    <div className="col-span-5 sm:col-span-2 bg-[#DBDFA6] rounded-2xl shadow-2xl h-1/2">
+    <div className="col-span-5 sm:col-span-2 bg-gradient-to-br from-[#3F704B] to-[#2E8B57] rounded-2xl shadow-2xl h-96">
       <iframe
         className="w-4/5 mx-auto h-4/5 my-10"
         src={`https://www.youtube.com/embed/${videoId}?si=Z4i21SJAJt_qsPQr`}
