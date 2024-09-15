@@ -5,7 +5,7 @@ import ReelText from "./components/reel-text";
 import Reel from "./components/reel";
 
 function App() {
-  const [videoId, setVideoId] = useState("");
+  const [videoId, setVideoId] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -36,11 +36,13 @@ function App() {
 
       <div className="grid grid-cols-5 mt-10 text-center mx-10">
         {videoId ? (
+          <>
           <Reel videoId={videoId} />
+          <ReelText videoId={videoId} />
+          </>
         ) : (
           <h1 className="">Paste a YouTube Video URL Above!</h1>
         )}
-        <ReelText videoId={videoId} />
       </div>
     </div>
   );

@@ -1,37 +1,55 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 const ReelText = ({ videoId }) => {
   const [visibleChunk, setVisibleChunk] = useState(null); // State to track visible chunk
+  const [chunks,setChunks] = useState([]);
+  const serverUrl = "http://localhost:5000"
+  useEffect(() => {
+    async function getTranscript() {
+      try {
+        console.log(videoId);
+        const res = await fetch(serverUrl + "/transcript/" + videoId, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch transcript");
+        }
+        const json_data = await res.json();
+        console.log(json_data);
+        setChunks(json_data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+  
+    if (videoId) {  // Ensure videoId is not null or undefined before fetching
+      getTranscript();
+    }
+  }, [videoId]);  // Correctly adding videoId as a dependency
+  
+  
 
-  // uncomment this after you get transcript
-  // useEffect(() => {
-  //   async function getTranscript() {
-  //     const res = await fetch(serverUrl + "/transcript");
-  //     const json_data = await res.json();
-  //     // const dataServer = await YoutubeTranscript.fetchTranscript(videoId);
-  //     setData(json_data);
-  //   }
 
-  //   getTranscript();
-  // }, []);
-
-  const chunks = [
-    {
-      chunk: "abc",
-      fact_or_not: "Not enough information",
-      response_text: "CIA factbook said it is",
-    },
-    {
-      chunk: "bcd",
-      fact_or_not: "Fact",
-      response_text: "CIA factbook said it is",
-    },
-    {
-      chunk: "efg",
-      fact_or_not: "Not a fact",
-      response_text: "CIA factbook said it is",
-    },
-  ];
+  // const chunks = [
+  //   {
+  //     chunk: "abc",
+  //     fact_or_not: "Not enough information",
+  //     response_text: "CIA factbook said it is",
+  //   },
+  //   {
+  //     chunk: "bcd",
+  //     fact_or_not: "Fact",
+  //     response_text: "CIA factbook said it is",
+  //   },
+  //   {
+  //     chunk: "efg",
+  //     fact_or_not: "Not a fact",
+  //     response_text: "CIA factbook said it is",
+  //   },
+  // ];
 
   const handleHover = (chunkNum) => {
     setVisibleChunk(chunkNum);
@@ -45,13 +63,13 @@ const ReelText = ({ videoId }) => {
     <div className="col-span-5 sm:col-span-3">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="sm:col-span-1 col-span-2">
-          <h1 className="font-bold text-2xl text-secondary">Transcript</h1>
-          <div className="m-5 overflow-y-auto h-screen">
+          <h1 className="font-bold text-2xl text-secondary text-[#3F704B] hover:text-[#00A86B]">Transcript</h1>
+          <div className="m-5 overflow-y-auto">
             {chunks.map((chunk, num) => (
               <div key={num}>
                 <p
                   id={"chunk" + String(num)}
-                  className="p-3 text-xl inline-block hover:text-secondary"
+                  className="p-3 text-xl inline-block hover:text-[#2E8B57]"
                   onMouseEnter={() => handleHover(num)}
                   onMouseLeave={handleMouseLeave}
                 >
