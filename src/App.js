@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import ReelText from "./components/reel-text";
-import { FactCheck } from "./components/fact-check";
+// import { FactCheck } from "./components/fact-check";
 import Reel from "./components/reel";
 
 function App() {
@@ -14,8 +14,10 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="mx-auto">
       <div className="w-full text-center m-10 mx-auto">
+        <h1 className="text-4xl text-primary font-bold m-10">Verif.ai</h1>
+        <h2 className="text-2xl text-primary mb-10">The Fact Checker</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -36,10 +38,9 @@ function App() {
         {videoId ? (
           <Reel videoId={videoId} />
         ) : (
-          <h1>Paste a YouTube Video URL Above!</h1>
+          <h1 className="">Paste a YouTube Video URL Above!</h1>
         )}
         <ReelText videoId={videoId} />
-        <FactCheck />
       </div>
     </div>
   );
