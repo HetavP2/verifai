@@ -1,37 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ReelText = ({ videoId }) => {
   const [visibleChunk, setVisibleChunk] = useState(null); // State to track visible chunk
+  const [chunks, setChunks] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading
+  const serverUrl = "http://localhost:5000";
 
-  // uncomment this after you get transcript
-  // useEffect(() => {
-  //   async function getTranscript() {
-  //     const res = await fetch(serverUrl + "/transcript");
-  //     const json_data = await res.json();
-  //     // const dataServer = await YoutubeTranscript.fetchTranscript(videoId);
-  //     setData(json_data);
-  //   }
+  useEffect(() => {
+    async function getTranscript() {
+      try {
+        console.log(videoId);
+        const res = await fetch(serverUrl + "/transcript/" + videoId, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (!res.ok) {
+          throw new Error("Failed to fetch transcript");
+        }
+        const json_data = await res.json();
+        console.log(json_data);
 
-  //   getTranscript();
-  // }, []);
+        // Simulate a 2-minute delay before setting the chunks
+        setTimeout(() => {
+          setChunks(json_data);
+          setLoading(false); // Set loading to false after data is loaded
+        }, 30000); // 1-minute delay (120,000 ms)
+      } catch (error) {
+        console.error("Error:", error);
+        setLoading(false); // Also stop loading if an error occurs
+      }
+    }
 
-  const chunks = [
-    {
-      chunk: "abc",
-      fact_or_not: "Not enough information",
-      response_text: "CIA factbook said it is",
-    },
-    {
-      chunk: "bcd",
-      fact_or_not: "Fact",
-      response_text: "CIA factbook said it is",
-    },
-    {
-      chunk: "efg",
-      fact_or_not: "Not a fact",
-      response_text: "CIA factbook said it is",
-    },
-  ];
+    if (videoId) {
+      // Ensure videoId is not null or undefined before fetching
+      getTranscript();
+    }
+  }, []); // Correctly adding videoId as a dependency
 
   const handleHover = (chunkNum) => {
     setVisibleChunk(chunkNum);
@@ -41,12 +47,25 @@ const ReelText = ({ videoId }) => {
     setVisibleChunk(null);
   };
 
+  // Show a loading spinner or message while data is being fetched
+  if (loading) {
+    return (
+      <div className="col-span-5 sm:col-span-3">
+        <p className="text-center text-xl">
+          Loading transcript, please wait...
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="col-span-5 sm:col-span-3">
       <div className="grid sm:grid-cols-2 grid-cols-1">
         <div className="sm:col-span-1 col-span-2">
-          <h1 className="font-bold text-2xl text-secondary text-[#3F704B] hover:text-[#00A86B]">Transcript</h1>
-          <div className="m-5 overflow-y-auto">
+          <h1 className="font-bold text-2xl text-secondary text-[#3F704B] hover:text-[#00A86B]">
+            Transcript
+          </h1>
+          <div className="m-5 overflow-y-auto h-screen">
             {chunks.map((chunk, num) => (
               <div key={num}>
                 <p
