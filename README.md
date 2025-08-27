@@ -1,36 +1,94 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Fact Check V2
 
-First, run the development server:
+## Introduction
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Fact Check V2 is a modern web application designed to help users verify information, manage fact-checking workflows, and collaborate on content validation. Built with React, it provides a responsive and user-friendly interface for submitting claims, reviewing evidence, and publishing verdicts.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Claim Submission**
+  - Users can submit claims for fact-checking.
+  - Support for text, links, and attachments.
 
-## Learn More
+- **Evidence Management**
+  - Add, edit, and organize supporting evidence.
+  - Link sources and annotate findings.
 
-To learn more about Next.js, take a look at the following resources:
+- **Review Workflow**
+  - Assign claims to reviewers.
+  - Track claim status: pending, in review, verified, or debunked.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Collaboration**
+  - Comment and discuss claims with other users.
+  - Tag and categorize claims for easy searching.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Publishing**
+  - Publish fact-check verdicts with detailed explanations.
+  - Share results via public links.
 
-## Deploy on Vercel
+- **Dashboard & Analytics**
+  - Overview of claims, statuses, and reviewer activity.
+  - Visualize trends and statistics.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **User Authentication & Roles**
+  - Secure login and registration.
+  - Role-based access: submitter, reviewer, admin.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Responsive Frontend**
+  - Mobile-friendly UI using React and CSS.
+  - Intuitive navigation and interactive components.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**
+  - **React**: Component-based UI library.
+  - **JavaScript (ES6+)**: Application logic.
+  - **CSS**: Styling and layout.
+  - **Create React App**: Project scaffolding and build tools.
+
+- **Testing**
+  - **Jest**: Unit and integration tests.
+  - **React Testing Library**: Component testing.
+
+---
+
+## 📝 Project Structure
+
+- `fact-check-v2/`
+  - `public/` — Static assets and HTML template.
+  - `src/`
+    - `components/` — Reusable React components.
+    - `pages/` — Main application pages (Dashboard, Claim Submission, Review, etc.).
+    - `services/` — API calls and business logic.
+    - `utils/` — Utility functions and helpers.
+    - `App.js` — Main application entry point.
+    - `index.js` — React root rendering.
+  - `README.md` — Project documentation.
+  - `package.json` — Project dependencies and scripts.
+
+---
+
+## 🚀 How to Run
+
+Follow these steps to set up and run Fact Check V2:
+
+1. **Install Node.js**  
+   Ensure Node.js (v14 or higher) and npm are installed.
+
+2. **Install dependencies**  
+   In the project directory, run:
+   ```
+   npm install
+   ```
+
+3. **Start the development server**  
+   ```
+   npm start
+   ```
+   The app will open at [http://localhost:3000](http://localhost:3000).
