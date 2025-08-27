@@ -1,10 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 # Fact Check V2
 
 ## Introduction
 
-Fact Check V2 is a modern web application designed to help users verify information, manage fact-checking workflows, and collaborate on content validation. Built with React, it provides a responsive and user-friendly interface for submitting claims, reviewing evidence, and publishing verdicts.
+Fact Check V2 is a full-stack web application for verifying information, managing fact-checking workflows, and collaborating on content validation. The frontend is built with Next.js (React), while the backend uses Flask to provide advanced fact-checking and citation generation features, including YouTube transcript analysis and AI-powered classification.
 
 ---
 
@@ -17,6 +15,11 @@ Fact Check V2 is a modern web application designed to help users verify informat
 - **Evidence Management**
   - Add, edit, and organize supporting evidence.
   - Link sources and annotate findings.
+
+- **YouTube Transcript Fact-Checking**
+  - Submit a YouTube video ID to extract and analyze its transcript.
+  - Transcript is chunked and each chunk is checked for factual accuracy using AI.
+  - Generates up to 3 MLA-format citations per chunk via web search.
 
 - **Review Workflow**
   - Assign claims to reviewers.
@@ -39,7 +42,7 @@ Fact Check V2 is a modern web application designed to help users verify informat
   - Role-based access: submitter, reviewer, admin.
 
 - **Responsive Frontend**
-  - Mobile-friendly UI using React and CSS.
+  - Mobile-friendly UI using Next.js and CSS.
   - Intuitive navigation and interactive components.
 
 ---
@@ -47,10 +50,23 @@ Fact Check V2 is a modern web application designed to help users verify informat
 ## 🛠️ Tech Stack
 
 - **Frontend**
+  - **Next.js**: React-based framework for SSR and routing.
   - **React**: Component-based UI library.
   - **JavaScript (ES6+)**: Application logic.
   - **CSS**: Styling and layout.
-  - **Create React App**: Project scaffolding and build tools.
+
+- **Backend** - (see finalbranch)
+  - **Python 3.x**
+  - **Flask**: REST API for transcript analysis and fact-checking.
+  - **Flask-CORS**: Cross-origin resource sharing for frontend-backend communication.
+  - **Cohere API**: AI-powered chat for citation generation and fact classification.
+  - **YouTube Transcript API**: Extracts transcripts from YouTube videos.
+  - **Requests, pandas**: Data handling and HTTP requests.
+
+- **Testing**
+  - **Jest**: Unit and integration tests (frontend).
+  - **React Testing Library**: Component testing.
+
 ---
 
 ## 📝 Project Structure
@@ -64,6 +80,8 @@ Fact Check V2 is a modern web application designed to help users verify informat
     - `utils/` — Utility functions and helpers.
     - `App.js` — Main application entry point.
     - `index.js` — React root rendering.
+  - `backend/`
+    - `app.py` — Flask backend for transcript analysis and fact-checking.
   - `README.md` — Project documentation.
   - `package.json` — Project dependencies and scripts.
 
@@ -71,19 +89,36 @@ Fact Check V2 is a modern web application designed to help users verify informat
 
 ## 🚀 How to Run
 
-Follow these steps to set up and run Fact Check V2:
+### Frontend (Next.js)
 
 1. **Install Node.js**  
    Ensure Node.js (v14 or higher) and npm are installed.
 
 2. **Install dependencies**  
-   In the project directory, run:
    ```
    npm install
    ```
 
 3. **Start the development server**  
    ```
-   npm start
+   npm run dev
    ```
    The app will open at [http://localhost:3000](http://localhost:3000).
+
+### Backend (Flask)
+
+1. **Install Python 3.x**  
+   Ensure Python 3.x is installed.
+
+2. **Install dependencies**  
+   ```
+   pip install flask flask-cors cohere pandas youtube-transcript-api requests
+   ```
+
+3. **Run the Flask server**  
+   ```
+   python app.py
+   ```
+   The backend will run at [http://localhost:5000](http://localhost:5000).
+
+---
