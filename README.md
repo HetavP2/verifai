@@ -51,11 +51,6 @@ Fact Check V2 is a modern web application designed to help users verify informat
   - **JavaScript (ES6+)**: Application logic.
   - **CSS**: Styling and layout.
   - **Create React App**: Project scaffolding and build tools.
-
-- **Testing**
-  - **Jest**: Unit and integration tests.
-  - **React Testing Library**: Component testing.
-
 ---
 
 ## 📝 Project Structure
